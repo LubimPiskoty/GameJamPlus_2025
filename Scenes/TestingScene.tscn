@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qnq4ms3k1bmq"]
+
+[ext_resource type="Script" uid="uid://dclrc1cda41uk" path="res://Scripts/GameManager.gd" id="1_2nsi2"]
+[ext_resource type="PackedScene" uid="uid://2vbqcmried47" path="res://Prefabs/KeyComboUI.tscn" id="1_fi1yh"]
+
+[node name="TestingScene" type="Node2D"]
+script = ExtResource("1_2nsi2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="KeyComboUI" parent="." instance=ExtResource("1_fi1yh")]
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
