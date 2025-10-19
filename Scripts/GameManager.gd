@@ -1,13 +1,33 @@
-extends Node
+extends Node2D
 
-@onready var keyCombo = $KeyComboUI
+@export var ZeusTeleportToNode: Node2D
+@export var fightManager: FightManager
+
+func _on_zeus_dialog_body_entered(body: Node2D) -> void:
+	if body.name != "Player":
+		return
+	body.process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer(0.5).timeout
+	body.global_position = ZeusTeleportToNode.global_position
+	await get_tree().create_timer(0.5).timeout
+	body.process_mode = Node.PROCESS_MODE_INHERIT
 
 
-func _ready() -> void:
-	# For testing try to run key combo on start
-	while true:
-		var string = ""
-		for i in range(8):
-			string += String.chr(randi_range(ord("A"), ord("Z")))
-		await get_tree().create_timer(1).timeout
-		print("Combo score: ", await keyCombo.doCombo(string, 3))
+func _on_monster_fight_1_body_entered(body: Node2D) -> void:
+	if body.name != "Player":
+		return
+	startCombat(body)
+
+
+func _on_monster_fight_2_body_entered(body: Node2D) -> void:
+	if body.name != "Player":
+		return
+	startCombat(body)
+
+func startCombat(body: Node2D):
+	body.process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer(0.5).timeout
+
+	var player = FightManager.FightData.new(20, 20, 5, 3)
+	var enemy = FightManager.FightData.new(10, 10, 6, 2)
+	fightManager.startFight(player, enemy)

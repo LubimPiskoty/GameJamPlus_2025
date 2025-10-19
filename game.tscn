@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://cej3bj3qyc4rk"]
+[gd_scene load_steps=18 format=3 uid="uid://cej3bj3qyc4rk"]
 
 [ext_resource type="PackedScene" uid="uid://cg60gcpna61y3" path="res://Player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bnhfa2nsh337n" path="res://Scripts/GameManager.gd" id="1_vef74"]
 [ext_resource type="Texture2D" uid="uid://deews7cmwikpm" path="res://Tiles/nature_sheet.png" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://c41xpx5vkfa44" path="res://Tiles/rock_sheet.png" id="3_7jktm"]
 [ext_resource type="Texture2D" uid="uid://cgq0syn0goxuq" path="res://Tiles/oblaky_full_opacity.png" id="4_eow3j"]
 [ext_resource type="Texture2D" uid="uid://b0tg308mao1ra" path="res://Tiles/zeus_room_sheet.png" id="4_ryrav"]
 [ext_resource type="Texture2D" uid="uid://qqqstnlq8558" path="res://Tiles/oblaky_low_opacity.png" id="5_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://clcsb5vksj6p8" path="res://Tiles/oblaky_medium_opacity.png" id="6_vef74"]
+[ext_resource type="PackedScene" uid="uid://cmin6jyn1qw03" path="res://Scenes/Fight.scn" id="8_j5wjh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eow3j"]
 texture = ExtResource("2_fc0e3")
@@ -191,7 +193,17 @@ sources/3 = SubResource("TileSetAtlasSource_hve3p")
 sources/4 = SubResource("TileSetAtlasSource_mfdv2")
 sources/5 = SubResource("TileSetAtlasSource_iotsf")
 
-[node name="Game" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
+size = Vector2(128, 128)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ZeusTeleportToNode", "fightManager")]
+script = ExtResource("1_vef74")
+ZeusTeleportToNode = NodePath("ZeusTeleportTo")
+fightManager = NodePath("Fight")
+
+[node name="Fight" parent="." instance=ExtResource("8_j5wjh")]
+visible = false
+comboTimeout = 1.5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_80nbo")
@@ -208,8 +220,33 @@ layer_3/name = "Layer3"
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(-69, -1)
+position = Vector2(-72, 5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(31, 13)
 zoom = Vector2(4, 4)
+
+[node name="MonsterFight1" type="Area2D" parent="."]
+position = Vector2(350, 423)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterFight1"]
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="ZeusDialog" type="Area2D" parent="."]
+position = Vector2(198, -241)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeusDialog"]
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="MonsterFight2" type="Area2D" parent="."]
+position = Vector2(350, 710)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterFight2"]
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="ZeusTeleportTo" type="Node2D" parent="."]
+position = Vector2(0, 550)
+
+[connection signal="body_entered" from="MonsterFight1" to="." method="_on_monster_fight_1_body_entered"]
+[connection signal="body_entered" from="ZeusDialog" to="." method="_on_zeus_dialog_body_entered"]
+[connection signal="body_entered" from="MonsterFight2" to="." method="_on_monster_fight_2_body_entered"]

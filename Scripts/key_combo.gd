@@ -1,3 +1,4 @@
+class_name KeyCombo
 extends Control
 ## Author: Piskotka
 
@@ -7,10 +8,11 @@ extends Control
 # Progress bar for visualisation of remaining time
 @onready var progress: ProgressBar = $MarginContainer/VBoxContainer/ProgressBar
 	
-func doCombo(characters: String, time: float) -> int:
+func doComboString(characters: String, time: float) -> int:
 	self.visible = true
 	
 	label.text = characters
+	await get_tree().create_timer(0.5).timeout
 	
 	var startTime = Time.get_ticks_msec()
 	var last_char = ""
@@ -35,5 +37,16 @@ func doCombo(characters: String, time: float) -> int:
 		await get_tree().process_frame # Await new frame
 			
 	
+
+	await get_tree().create_timer(0.3).timeout
+	label.text = str(i)
+	await get_tree().create_timer(0.8).timeout
+
 	self.visible = false
 	return i # Return the number of correctly pressed keys 
+
+func doComboLength(lenght: int, time: float):
+	var string = ""
+	for i in range(lenght):
+		string += char(randi_range(ord("A"), ord("Z")))
+	return await doComboString(string, time)
