@@ -2,12 +2,15 @@ extends Node2D
 
 @export var ZeusTeleportToNode: Node2D
 @export var fightManager: FightManager
-
+@export var dialogue: DialogueResource
+var a = false 
 func _on_zeus_dialog_body_entered(body: Node2D) -> void:
-	if body.name != "Player":
+	if body.name != "Player" or a :
 		return
+	a=true
 	body.process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(0.5).timeout
+	DialogueManager.show_dialogue_balloon(dialogue, "start")
+	await get_tree().create_timer(2).timeout
 	body.global_position = ZeusTeleportToNode.global_position
 	await get_tree().create_timer(0.5).timeout
 	body.process_mode = Node.PROCESS_MODE_INHERIT
