@@ -10,7 +10,7 @@ func _on_zeus_dialog_body_entered(body: Node2D) -> void:
 	a=true
 	body.process_mode = Node.PROCESS_MODE_DISABLED
 	DialogueManager.show_dialogue_balloon(dialogue, "start")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 	body.global_position = ZeusTeleportToNode.global_position
 	await get_tree().create_timer(0.5).timeout
 	body.process_mode = Node.PROCESS_MODE_INHERIT
