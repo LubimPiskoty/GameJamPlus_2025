@@ -99,9 +99,11 @@ func getOpponent(doerIndex: int) -> FightData:
 
 func defaultWin():
 	isRunning = false
-	dialog.text = "Player has WON!!"
+	dialog.text = "Player has WON!! Thank You for Playing Made By Emma Samuel Lukas Timon"
+	
+	
 
 func defaultLose():
 	isRunning = false
-	dialog.text = "Player has LOST!!"
+	dialog.text = "Player has LOST!! Thank You for Playing Made By Emma Samuel Lukas Timon"
 	
