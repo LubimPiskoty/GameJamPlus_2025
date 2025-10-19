@@ -11,7 +11,9 @@ func _physics_process(delta):
 	if direction.length() > 0:
 		last_direction = direction
 		play_walk_animation(direction)
-		
+	else:
+		play_idle_animation(last_direction)
+
 func play_walk_animation(direction):
 	if direction.x > 0:
 		$AnimatedSprite2D.play("Walk_right")
@@ -21,3 +23,13 @@ func play_walk_animation(direction):
 		$AnimatedSprite2D.play("Walk_down")
 	elif direction.y < 0:
 		$AnimatedSprite2D.play("Walk_up")
+
+func play_idle_animation(last_direction):
+	if last_direction.x > 0:
+		$AnimatedSprite2D.play("Idle_right")
+	elif last_direction.x < 0:
+		$AnimatedSprite2D.play("Idle_left")
+	elif last_direction.y > 0:
+		$AnimatedSprite2D.play("Idle_down")
+	elif last_direction.y < 0:
+		$AnimatedSprite2D.play("Idle_up")
