@@ -12,7 +12,7 @@ func _physics_process(delta):
 	
 	if direction.length() > 0:
 		last_direction = direction
-	elif last_direction.length_squared() >= 1:
-		last_direction /= 10
+	elif last_direction.length() > 0.15:
+		last_direction = last_direction.limit_length(0.1)
 	
 	animTree["parameters/Locomotion/blend_position"] = last_direction
