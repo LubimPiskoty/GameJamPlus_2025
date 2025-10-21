@@ -12,6 +12,7 @@ func doComboString(characters: String, time: float) -> int:
 	self.visible = true
 	
 	label.text = characters
+	progress.value=0
 	await get_tree().create_timer(0.5).timeout
 	
 	var startTime = Time.get_ticks_msec()
