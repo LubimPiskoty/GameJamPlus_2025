@@ -13,11 +13,23 @@ config_version=5
 config/name="Project_GameJam+"
 run/main_scene="uid://cej3bj3qyc4rk"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://Systems/FightSystem/Prefabs/balloon.tscn"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [editor]
 
