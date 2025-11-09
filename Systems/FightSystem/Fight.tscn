@@ -1,40 +1,91 @@
-[gd_scene load_steps=11 format=4 uid="uid://un01f78supte"]
+[gd_scene load_steps=27 format=4 uid="uid://un01f78supte"]
 
 [ext_resource type="Script" uid="uid://bab2lls1yolqc" path="res://Systems/FightSystem/Scripts/FightManager.gd" id="1_4n6yy"]
+[ext_resource type="Script" uid="uid://dp7jxpflinrii" path="res://Systems/FightSystem/Scripts/TurnOrder.gd" id="2_0ff21"]
 [ext_resource type="PackedScene" uid="uid://cocuah8dgswb3" path="res://Systems/FightSystem/Prefabs/TurnOrderIcon.tscn" id="2_a67i2"]
 [ext_resource type="Script" uid="uid://c8ayfyaxhr76x" path="res://Systems/FightSystem/Scripts/FightMenu.gd" id="3_70rx3"]
 [ext_resource type="PackedScene" uid="uid://2vbqcmried47" path="res://Prefabs/KeyComboUI.tscn" id="4_0sxkw"]
 [ext_resource type="Theme" uid="uid://dyn2de25dn40h" path="res://Assets/UI_Theme.tres" id="4_70rx3"]
 [ext_resource type="PackedScene" uid="uid://br038cjsx7k78" path="res://Systems/FightSystem/Prefabs/balloon.tscn" id="4_a67i2"]
-[ext_resource type="Texture2D" uid="uid://cy7txafik5fj6" path="res://Assets/Sprites/AngleAI.png" id="5_0sxkw"]
-[ext_resource type="Texture2D" uid="uid://bqvj1ywmkl0vj" path="res://Assets/3rdParty/Dungeon Pack (2.3)/Samples/Sprites/merged.png" id="7_0sxkw"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8rm7"]
-texture = ExtResource("7_0sxkw")
-texture_region_size = Vector2i(32, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 24)
-1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 24)
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 24)
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 24)
-0:1/0 = 0
-0:1/0/texture_origin = Vector2i(0, 24)
-1:1/0 = 0
-1:1/0/texture_origin = Vector2i(0, 24)
-2:1/0 = 0
-2:1/0/texture_origin = Vector2i(0, 24)
+[ext_resource type="Script" uid="uid://dbc83lq0uf6xs" path="res://Systems/FightSystem/Scripts/CharacterList.gd" id="5_7np0b"]
+[ext_resource type="Script" uid="uid://hbakf3m5lo4v" path="res://Systems/FightSystem/Scripts/EnemySelector.gd" id="5_c7kuk"]
+[ext_resource type="Script" uid="uid://b5286saishs7x" path="res://Systems/FightSystem/Scripts/AbilityList.gd" id="6_h4a4a"]
+[ext_resource type="PackedScene" uid="uid://b4hpjfycitkn8" path="res://Prefabs/Character.tscn" id="7_q8rm7"]
+[ext_resource type="Script" uid="uid://bolymwf31wy6o" path="res://Scripts/AbilityStats.gd" id="8_gx5c0"]
+[ext_resource type="Texture2D" uid="uid://tc06bvi34jtt" path="res://Assets/Icons/SwordIcon.png" id="9_jposd"]
+[ext_resource type="Texture2D" uid="uid://cg5qei72acokg" path="res://Assets/Icons/HeartIcon.png" id="10_gx5c0"]
+[ext_resource type="Script" uid="uid://hp8vy6m6k1gq" path="res://Scripts/CharacterStats.gd" id="11_c7kuk"]
+[ext_resource type="Texture2D" uid="uid://bp0j06kt5bccs" path="res://Assets/Icons/ShieldIcon.png" id="11_jposd"]
+[ext_resource type="Texture2D" uid="uid://bmq5o63pubm8o" path="res://Assets/Sprites/AngleAI_Icon.png" id="12_c7kuk"]
 
 [sub_resource type="TileSet" id="TileSet_e43xr"]
 tile_shape = 1
 tile_layout = 2
 tile_size = Vector2i(32, 16)
-sources/22 = SubResource("TileSetAtlasSource_q8rm7")
 
-[node name="Fight" type="CanvasLayer"]
+[sub_resource type="Resource" id="Resource_kikd7"]
+script = ExtResource("11_c7kuk")
+name = "Jano"
+icon = ExtResource("12_c7kuk")
+max_health = 1
+speed = 2
+max_armor = 3
+metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
+
+[sub_resource type="Resource" id="Resource_7bqd7"]
+script = ExtResource("8_gx5c0")
+name = "SLASH"
+icon = ExtResource("9_jposd")
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
+
+[sub_resource type="Resource" id="Resource_gx5c0"]
+script = ExtResource("8_gx5c0")
+name = "HEAL"
+icon = ExtResource("10_gx5c0")
+damage_type = 0
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
+
+[sub_resource type="Resource" id="Resource_w723q"]
+script = ExtResource("11_c7kuk")
+name = "Dano"
+icon = ExtResource("12_c7kuk")
+max_health = 5
+speed = 6
+max_armor = 7
+armorReduction = 8
+metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
+
+[sub_resource type="Resource" id="Resource_1ykoc"]
+script = ExtResource("8_gx5c0")
+name = "BLOCK"
+icon = ExtResource("11_jposd")
+damage_type = 2
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
+
+[sub_resource type="Resource" id="Resource_c7kuk"]
+script = ExtResource("11_c7kuk")
+name = "Enemy1"
+icon = ExtResource("12_c7kuk")
+metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
+
+[sub_resource type="Resource" id="Resource_jposd"]
+script = ExtResource("8_gx5c0")
+icon = ExtResource("10_gx5c0")
+damage_type = 2
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
+
+[sub_resource type="Resource" id="Resource_0ff21"]
+script = ExtResource("11_c7kuk")
+name = "Enemy2"
+icon = ExtResource("12_c7kuk")
+metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
+
+[node name="Fight" type="CanvasLayer" node_paths=PackedStringArray("friendly", "enemies")]
 script = ExtResource("1_4n6yy")
+frienlyColor = Color(0.76550007, 1, 0.32999998, 1)
+enemyColor = Color(1, 0.32333338, 0.3, 1)
+friendly = [NodePath("Player"), NodePath("Player2")]
+enemies = [NodePath("Enemy"), NodePath("Enemy2")]
 
 [node name="FightUI" type="Control" parent="."]
 layout_mode = 3
@@ -48,26 +99,21 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = -1.0
+offset_right = -1.0
 offset_bottom = 64.0
 grow_horizontal = 2
 
 [node name="IconHolder" type="HBoxContainer" parent="FightUI/TurnOrder"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
+layout_mode = 0
 offset_left = 16.0
-offset_top = -32.0
-offset_right = -16.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 624.0
+offset_bottom = 64.0
+size_flags_vertical = 4
+script = ExtResource("2_0ff21")
 
 [node name="TurnOrderIcon" parent="FightUI/TurnOrder/IconHolder" instance=ExtResource("2_a67i2")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="TurnOrderIcon2" parent="FightUI/TurnOrder/IconHolder" instance=ExtResource("2_a67i2")]
 layout_mode = 2
@@ -78,10 +124,28 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
+offset_top = -126.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_70rx3")
+
+[node name="EnemySelector" type="ItemList" parent="FightUI/DialogPanel" node_paths=PackedStringArray("prev")]
+visible = false
+layout_mode = 0
+offset_left = 322.0
+offset_top = 16.0
+offset_right = 463.0
+offset_bottom = 112.0
+size_flags_horizontal = 3
+focus_mode = 0
+focus_behavior_recursive = 1
+mouse_filter = 2
+theme = ExtResource("4_70rx3")
+theme_override_font_sizes/font_size = 20
+allow_search = false
+script = ExtResource("5_c7kuk")
+prev = NodePath("../FightMenu/Abilities")
 
 [node name="FightMenu" type="BoxContainer" parent="FightUI/DialogPanel"]
 layout_mode = 0
@@ -90,7 +154,7 @@ offset_top = 16.0
 offset_right = 608.0
 offset_bottom = 112.0
 
-[node name="Characters" type="ItemList" parent="FightUI/DialogPanel/FightMenu"]
+[node name="Characters" type="ItemList" parent="FightUI/DialogPanel/FightMenu" node_paths=PackedStringArray("abilityMenu", "next")]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -99,8 +163,12 @@ mouse_filter = 2
 theme = ExtResource("4_70rx3")
 theme_override_font_sizes/font_size = 20
 allow_search = false
+fixed_icon_size = Vector2i(28, 28)
+script = ExtResource("5_7np0b")
+abilityMenu = NodePath("../Abilities")
+next = NodePath("../Abilities")
 
-[node name="Abilities" type="ItemList" parent="FightUI/DialogPanel/FightMenu"]
+[node name="Abilities" type="ItemList" parent="FightUI/DialogPanel/FightMenu" node_paths=PackedStringArray("next", "prev")]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -109,8 +177,12 @@ mouse_filter = 2
 theme = ExtResource("4_70rx3")
 theme_override_font_sizes/font_size = 20
 allow_search = false
+script = ExtResource("6_h4a4a")
+next = NodePath("../../EnemySelector")
+prev = NodePath("../Characters")
 
-[node name="Stats" type="ItemList" parent="FightUI/DialogPanel/FightMenu"]
+[node name="Inspector" type="ItemList" parent="FightUI/DialogPanel/FightMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -119,6 +191,7 @@ mouse_filter = 2
 theme = ExtResource("4_70rx3")
 theme_override_font_sizes/font_size = 20
 allow_search = false
+fixed_icon_size = Vector2i(28, 28)
 
 [node name="FightBalloon" parent="FightUI/DialogPanel" instance=ExtResource("4_a67i2")]
 
@@ -139,6 +212,28 @@ position = Vector2(144, 224)
 tile_map_data = PackedByteArray("AAD6/wYAFgADAAAAAAD6/wcAFgADAAAAAAD6/wgAFgADAAAAAAD6/wkAFgADAAAAAAD7/wQAFgADAAAAAAD7/wUAFgADAAAAAAD7/wYAFgADAAAAAAD7/wcAFgADAAAAAAD7/wgAFgADAAAAAAD7/wkAFgADAAAAAAD8/wIAFgADAAAAAAD8/wMAFgADAAAAAAD8/wQAFgADAAAAAAD8/wUAFgADAAAAAAD8/wYAFgADAAAAAAD8/wcAFgADAAAAAAD8/wgAFgADAAAAAAD8/wkAFgADAAAAAAD9/wAAFgADAAAAAAD9/wEAFgADAAAAAAD9/wIAFgADAAAAAAD9/wMAFgADAAAAAAD9/wQAFgADAAAAAAD9/wUAFgADAAAAAAD9/wYAFgADAAAAAAD9/wcAFgADAAAAAAD9/wgAFgADAAAAAAD9/wkAFgADAAAAAAD+//7/FgADAAAAAAD+////FgADAAAAAAD+/wAAFgADAAAAAAD+/wEAFgADAAAAAAD+/wIAFgADAAAAAAD+/wMAFgADAAAAAAD+/wQAFgADAAAAAAD+/wUAFgADAAAAAAD+/wYAFgADAAAAAAD+/wcAFgADAAAAAAD+/wgAFgADAAAAAAD+/wkAFgADAAAAAAD///z/FgADAAAAAAD///3/FgADAAAAAAD///7/FgADAAAAAAD/////FgADAAAAAAD//wAAFgADAAAAAAD//wEAFgADAAAAAAD//wIAFgADAAAAAAD//wMAFgADAAAAAAD//wQAFgADAAAAAAD//wUAFgADAAAAAAD//wYAFgADAAAAAAD//wcAFgADAAAAAAD//wgAFgADAAAAAAD//wkAFgADAAAAAAAAAPr/FgADAAAAAAAAAPv/FgADAAAAAAAAAPz/FgADAAAAAAAAAP3/FgADAAAAAAAAAP7/FgADAAAAAAAAAP//FgADAAAAAAAAAAAAFgADAAAAAAAAAAEAFgADAAAAAAAAAAIAFgADAAAAAAAAAAMAFgADAAAAAAAAAAQAFgADAAAAAAAAAAUAFgADAAAAAAAAAAYAFgADAAAAAAAAAAcAFgADAAAAAAAAAAgAFgADAAAAAAAAAAkAFgADAAAAAAABAPr/FgADAAAAAAABAPv/FgADAAAAAAABAPz/FgADAAAAAAABAP3/FgADAAAAAAABAP7/FgADAAAAAAABAP//FgADAAAAAAABAAAAFgADAAAAAAABAAEAFgADAAAAAAABAAIAFgADAAAAAAABAAMAFgADAAAAAAABAAQAFgADAAAAAAABAAUAFgADAAAAAAABAAYAFgADAAAAAAABAAcAFgADAAAAAAABAAgAFgADAAAAAAABAAkAFgADAAAAAAACAPr/FgADAAAAAAACAPv/FgADAAAAAAACAPz/FgADAAAAAAACAP3/FgADAAAAAAACAP7/FgADAAAAAAACAP//FgADAAAAAAACAAAAFgADAAAAAAACAAEAFgADAAAAAAACAAIAFgADAAAAAAACAAMAFgADAAAAAAACAAQAFgADAAAAAAACAAUAFgADAAAAAAACAAYAFgADAAAAAAACAAcAFgADAAAAAAACAAgAFgADAAAAAAACAAkAFgADAAAAAAADAPr/FgADAAAAAAADAPv/FgADAAAAAAADAPz/FgADAAAAAAADAP3/FgADAAAAAAADAP7/FgADAAAAAAADAP//FgADAAAAAAADAAAAFgADAAAAAAADAAEAFgADAAAAAAADAAIAFgADAAAAAAADAAMAFgADAAAAAAADAAQAFgADAAAAAAADAAUAFgADAAAAAAADAAYAFgADAAAAAAADAAcAFgADAAAAAAADAAgAFgADAAAAAAADAAkAFgADAAAAAAAEAPr/FgADAAAAAAAEAPv/FgADAAAAAAAEAPz/FgADAAAAAAAEAP3/FgADAAAAAAAEAP7/FgADAAAAAAAEAP//FgADAAAAAAAEAAAAFgADAAAAAAAEAAEAFgADAAAAAAAEAAIAFgADAAAAAAAEAAMAFgADAAAAAAAEAAQAFgADAAAAAAAEAAUAFgADAAAAAAAEAAYAFgADAAAAAAAEAAcAFgADAAAAAAAEAAgAFgADAAAAAAAEAAkAFgADAAAAAAAFAPr/FgADAAAAAAAFAPv/FgADAAAAAAAFAPz/FgADAAAAAAAFAP3/FgADAAAAAAAFAP7/FgADAAAAAAAFAP//FgADAAAAAAAFAAAAFgADAAAAAAAFAAEAFgADAAAAAAAFAAIAFgADAAAAAAAFAAMAFgADAAAAAAAFAAQAFgADAAAAAAAFAAUAFgADAAAAAAAFAAYAFgADAAAAAAAFAAcAFgADAAAAAAAFAAgAFgADAAAAAAAFAAkAFgADAAAAAAAGAPr/FgADAAAAAAAGAPv/FgADAAAAAAAGAPz/FgADAAAAAAAGAP3/FgADAAAAAAAGAP7/FgADAAAAAAAGAP//FgADAAAAAAAGAAAAFgADAAAAAAAGAAEAFgADAAAAAAAGAAIAFgADAAAAAAAGAAMAFgADAAAAAAAGAAQAFgADAAAAAAAGAAUAFgADAAAAAAAGAAYAFgADAAAAAAAGAAcAFgADAAAAAAAGAAgAFgADAAAAAAAGAAkAFgADAAAAAAAHAPr/FgADAAAAAAAHAPv/FgADAAAAAAAHAPz/FgADAAAAAAAHAP3/FgADAAAAAAAHAP7/FgADAAAAAAAHAP//FgADAAAAAAAHAAAAFgADAAAAAAAHAAEAFgADAAAAAAAHAAIAFgADAAAAAAAHAAMAFgADAAAAAAAHAAQAFgADAAAAAAAHAAUAFgADAAAAAAAHAAYAFgADAAAAAAAHAAcAFgADAAAAAAAHAAgAFgADAAAAAAAHAAkAFgADAAAAAAAIAPr/FgADAAAAAAAIAPv/FgADAAAAAAAIAPz/FgADAAAAAAAIAP3/FgADAAAAAAAIAP7/FgADAAAAAAAIAP//FgADAAAAAAAIAAAAFgADAAAAAAAIAAEAFgADAAAAAAAIAAIAFgADAAAAAAAIAAMAFgADAAAAAAAIAAQAFgADAAAAAAAIAAUAFgADAAAAAAAIAAYAFgADAAAAAAAIAAcAFgADAAAAAAAIAAgAFgADAAAAAAAJAPr/FgADAAAAAAAJAPv/FgADAAAAAAAJAPz/FgADAAAAAAAJAP3/FgADAAAAAAAJAP7/FgADAAAAAAAJAP//FgADAAAAAAAJAAAAFgADAAAAAAAJAAEAFgADAAAAAAAJAAIAFgADAAAAAAAJAAMAFgADAAAAAAAJAAQAFgADAAAAAAAJAAUAFgADAAAAAAAJAAYAFgADAAAAAAAKAPr/FgADAAAAAAAKAPv/FgADAAAAAAAKAPz/FgADAAAAAAAKAP3/FgADAAAAAAAKAP7/FgADAAAAAAAKAP//FgADAAAAAAAKAAAAFgADAAAAAAAKAAEAFgADAAAAAAAKAAIAFgADAAAAAAAKAAMAFgADAAAAAAAKAAQAFgADAAAAAAALAPr/FgADAAAAAAALAPv/FgADAAAAAAALAPz/FgADAAAAAAALAP3/FgADAAAAAAALAP7/FgADAAAAAAALAP//FgADAAAAAAALAAAAFgADAAAAAAALAAEAFgADAAAAAAALAAIAFgADAAAAAAAMAPr/FgADAAAAAAAMAPv/FgADAAAAAAAMAPz/FgADAAAAAAAMAP3/FgADAAAAAAAMAP7/FgADAAAAAAAMAP//FgADAAAAAAAMAAAAFgADAAAAAAANAPr/FgADAAAAAAANAPv/FgADAAAAAAANAPz/FgADAAAAAAANAP3/FgADAAAAAAANAP7/FgADAAAAAAAOAPr/FgADAAAAAAAOAPv/FgADAAAAAAAOAPz/FgADAAAAAAAPAPr/FgADAAAAAAD5/wkAFgADAAAAAAD5/wgAFgADAAAAAAA=")
 tile_set = SubResource("TileSet_e43xr")
 
-[node name="AngleAi" type="Sprite2D" parent="."]
-position = Vector2(144, 224)
-texture = ExtResource("5_0sxkw")
+[node name="Player" parent="." instance=ExtResource("7_q8rm7")]
+process_mode = 4
+position = Vector2(148, 228)
+stats = SubResource("Resource_kikd7")
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_7bqd7"), SubResource("Resource_gx5c0")])
+
+[node name="Player2" parent="." instance=ExtResource("7_q8rm7")]
+process_mode = 4
+position = Vector2(176, 243)
+stats = SubResource("Resource_w723q")
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_1ykoc"), SubResource("Resource_7bqd7")])
+
+[node name="Enemy" parent="." instance=ExtResource("7_q8rm7")]
+process_mode = 4
+position = Vector2(480, 224)
+scale = Vector2(-1, 1)
+stats = SubResource("Resource_c7kuk")
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jposd")])
+
+[node name="Enemy2" parent="." instance=ExtResource("7_q8rm7")]
+process_mode = 4
+position = Vector2(429, 243)
+scale = Vector2(-1, 1)
+stats = SubResource("Resource_0ff21")
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jposd")])
