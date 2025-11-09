@@ -18,16 +18,19 @@ func _ready() -> void:
 	
 	turnOrderHolder.create(turnOrder, turnOrder.map(func(x) -> Color: return frienlyColor if x in friendly else enemyColor))
 
+	var timer: SceneTreeTimer = null
 	while true:
-		#TODO: Make group moves
 		var onTurn: Array[Character] = get_consecutive()
 		if onTurn[0] in friendly:
 			fightMenu.enmMenu.update(enemies, false, false)
-			await fightMenu.DoTurn(friendly, onTurn)
+			await fightMenu.DoTurn(friendly, onTurn.duplicate())
 		else:
 			for enemy in onTurn:
 				await fightMenu.DoDialog(enemy.stats.name + " has skipped it's turn")
-		turnOrderHolder.remove(len(onTurn))
+		if timer and timer.time_left > 0:
+			print("TOO FAST")
+			await timer.timeout
+		timer = turnOrderHolder.remove(len(onTurn))
 
 func get_consecutive() -> Array[Character]:
 	var consecutive: Array[Character] = [turnOrder.pop_front()]
@@ -40,6 +43,8 @@ func get_consecutive() -> Array[Character]:
 
 
 #TODO: Make turn order UI updater
+#TODO: Make AI
+#TODO: Make damage!
 
 
 	
