@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn08mulgs3xjc"
-path="res://.godot/imported/Ul.png-abbb089d203a9d78c261f3cd46695c5c.ctex"
+uid="uid://qqqstnlq8558"
+path="res://.godot/imported/oblaky_low_opacity.png-e7649a0ed223e0f616664625dfa4487c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/Ul.png"
-dest_files=["res://.godot/imported/Ul.png-abbb089d203a9d78c261f3cd46695c5c.ctex"]
+source_file="res://Assets/Tiles/oblaky_low_opacity.png"
+dest_files=["res://.godot/imported/oblaky_low_opacity.png-e7649a0ed223e0f616664625dfa4487c.ctex"]
 
 [params]
 

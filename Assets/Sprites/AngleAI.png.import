@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deews7cmwikpm"
-path="res://.godot/imported/nature_sheet.png-eb189c90cff8da74229b5a572859d754.ctex"
+uid="uid://cy7txafik5fj6"
+path="res://.godot/imported/AngleAI.png-fab24cb707364ccc2fb0c8ae1b571842.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/nature_sheet.png"
-dest_files=["res://.godot/imported/nature_sheet.png-eb189c90cff8da74229b5a572859d754.ctex"]
+source_file="res://Assets/Sprites/AngleAI.png"
+dest_files=["res://.godot/imported/AngleAI.png-fab24cb707364ccc2fb0c8ae1b571842.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c41xpx5vkfa44"
-path="res://.godot/imported/rock_sheet.png-ee09c43a17b9bbe8e9e7c2bf72b95d4c.ctex"
+uid="uid://b871ai12phcuu"
+path="res://.godot/imported/Player_sprite_sheet.png-fa21f18caf6c78b6ebceb267e5800185.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/rock_sheet.png"
-dest_files=["res://.godot/imported/rock_sheet.png-ee09c43a17b9bbe8e9e7c2bf72b95d4c.ctex"]
+source_file="res://Assets/Sprites/Player_sprite_sheet.png"
+dest_files=["res://.godot/imported/Player_sprite_sheet.png-fa21f18caf6c78b6ebceb267e5800185.ctex"]
 
 [params]
 

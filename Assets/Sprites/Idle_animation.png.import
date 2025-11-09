@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfda5wcd67unt"
-path="res://.godot/imported/steny_sheet.png-74ab0873ca25e9e02acb55a23df792ad.ctex"
+uid="uid://ccgiy5klymel8"
+path="res://.godot/imported/Idle_animation.png-e42652e3d88fb9a336fa7b6995982058.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/steny_sheet.png"
-dest_files=["res://.godot/imported/steny_sheet.png-74ab0873ca25e9e02acb55a23df792ad.ctex"]
+source_file="res://Assets/Sprites/Idle_animation.png"
+dest_files=["res://.godot/imported/Idle_animation.png-e42652e3d88fb9a336fa7b6995982058.ctex"]
 
 [params]
 

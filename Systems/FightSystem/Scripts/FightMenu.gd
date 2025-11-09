@@ -43,17 +43,15 @@ func _input(event: InputEvent) -> void:
 	var fields = [charactersList, abilitiesList]
 	var i = fields.find(selected)
 	if event.is_action_pressed("ui_left"):
-		var f = fields.get(i-1)
-		if f:
+		if i-1 >= 0:
 			selected.deselect_all()
-			selected = f
+			selected = fields[i-1]
 			selected.select(0)
 			inspect(selected.get_item_text(0))
 
 	if event.is_action_pressed("ui_right"):
-		var f = fields.get(i+1)
-		if f:
-			selected = f
+		if i+1 < fields.size():
+			selected = fields[i+1]
 			selected.select(0)
 			inspect(selected.get_item_text(0))
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxv3rjsslphv6"
-path="res://.godot/imported/Boss.png-5f39d8c5f605b11d77f0dce7956b3826.ctex"
+uid="uid://b0tg308mao1ra"
+path="res://.godot/imported/zeus_room_sheet.png-a6cacc6b3db687d635af22027bf7cff2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Boss.png"
-dest_files=["res://.godot/imported/Boss.png-5f39d8c5f605b11d77f0dce7956b3826.ctex"]
+source_file="res://Assets/Tiles/zeus_room_sheet.png"
+dest_files=["res://.godot/imported/zeus_room_sheet.png-a6cacc6b3db687d635af22027bf7cff2.ctex"]
 
 [params]
 

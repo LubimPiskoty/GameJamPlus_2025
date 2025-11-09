@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0tg308mao1ra"
-path="res://.godot/imported/zeus_room_sheet.png-8b750ff5fa516b53d0573c5bea674bdf.ctex"
+uid="uid://deews7cmwikpm"
+path="res://.godot/imported/nature_sheet.png-7a7319e79a2eaaf131e1c3378a7d8fcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/zeus_room_sheet.png"
-dest_files=["res://.godot/imported/zeus_room_sheet.png-8b750ff5fa516b53d0573c5bea674bdf.ctex"]
+source_file="res://Assets/Tiles/nature_sheet.png"
+dest_files=["res://.godot/imported/nature_sheet.png-7a7319e79a2eaaf131e1c3378a7d8fcf.ctex"]
 
 [params]
 

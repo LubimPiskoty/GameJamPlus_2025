@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clcsb5vksj6p8"
-path="res://.godot/imported/oblaky_medium_opacity.png-d71703cc66b57e6d26d4d1945d50fcee.ctex"
+uid="uid://dfda5wcd67unt"
+path="res://.godot/imported/steny_sheet.png-b9e8b18a5f767471202bdb8d7904bd23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/oblaky_medium_opacity.png"
-dest_files=["res://.godot/imported/oblaky_medium_opacity.png-d71703cc66b57e6d26d4d1945d50fcee.ctex"]
+source_file="res://Assets/Tiles/steny_sheet.png"
+dest_files=["res://.godot/imported/steny_sheet.png-b9e8b18a5f767471202bdb8d7904bd23.ctex"]
 
 [params]
 
