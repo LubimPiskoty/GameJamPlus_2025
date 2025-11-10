@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://un01f78supte"]
+[gd_scene load_steps=29 format=4 uid="uid://un01f78supte"]
 
 [ext_resource type="Script" uid="uid://bab2lls1yolqc" path="res://Systems/FightSystem/Scripts/FightManager.gd" id="1_4n6yy"]
 [ext_resource type="Script" uid="uid://dp7jxpflinrii" path="res://Systems/FightSystem/Scripts/TurnOrder.gd" id="2_0ff21"]
@@ -8,12 +8,13 @@
 [ext_resource type="Theme" uid="uid://dyn2de25dn40h" path="res://Assets/UI_Theme.tres" id="4_70rx3"]
 [ext_resource type="PackedScene" uid="uid://br038cjsx7k78" path="res://Systems/FightSystem/Prefabs/balloon.tscn" id="4_a67i2"]
 [ext_resource type="Script" uid="uid://dbc83lq0uf6xs" path="res://Systems/FightSystem/Scripts/CharacterList.gd" id="5_7np0b"]
-[ext_resource type="Script" uid="uid://hbakf3m5lo4v" path="res://Systems/FightSystem/Scripts/EnemySelector.gd" id="5_c7kuk"]
+[ext_resource type="Script" uid="uid://hbakf3m5lo4v" path="res://Systems/FightSystem/Scripts/TargetSelector.gd" id="5_c7kuk"]
 [ext_resource type="Script" uid="uid://b5286saishs7x" path="res://Systems/FightSystem/Scripts/AbilityList.gd" id="6_h4a4a"]
 [ext_resource type="PackedScene" uid="uid://b4hpjfycitkn8" path="res://Prefabs/Character.tscn" id="7_q8rm7"]
+[ext_resource type="Texture2D" uid="uid://bp0j06kt5bccs" path="res://Assets/Icons/ShieldIcon.png" id="8_0ff21"]
+[ext_resource type="Script" uid="uid://c1nnkpj88p5gn" path="res://Systems/FightSystem/Scripts/Enemy.gd" id="8_c7kuk"]
 [ext_resource type="Script" uid="uid://bolymwf31wy6o" path="res://Scripts/AbilityStats.gd" id="8_gx5c0"]
 [ext_resource type="Texture2D" uid="uid://tc06bvi34jtt" path="res://Assets/Icons/SwordIcon.png" id="9_jposd"]
-[ext_resource type="Texture2D" uid="uid://cg5qei72acokg" path="res://Assets/Icons/HeartIcon.png" id="10_gx5c0"]
 [ext_resource type="TileSet" uid="uid://g1fgtahkxoh" path="res://Assets/Tiles/tiles_set.tres" id="11_0ff21"]
 [ext_resource type="Script" uid="uid://hp8vy6m6k1gq" path="res://Scripts/CharacterStats.gd" id="11_c7kuk"]
 [ext_resource type="Texture2D" uid="uid://bmq5o63pubm8o" path="res://Assets/Sprites/AngleAI_Icon.png" id="12_c7kuk"]
@@ -47,9 +48,9 @@ metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
 
 [sub_resource type="Resource" id="Resource_jjms2"]
 script = ExtResource("8_gx5c0")
-name = "SMASH"
-icon = ExtResource("9_jposd")
-damage = 4
+name = "Smash"
+icon = ExtResource("8_0ff21")
+damage = 5
 damage_type = 2
 metadata/_custom_type_script = "uid://bolymwf31wy6o"
 
@@ -57,14 +58,7 @@ metadata/_custom_type_script = "uid://bolymwf31wy6o"
 script = ExtResource("11_c7kuk")
 name = "Enemy1"
 icon = ExtResource("12_c7kuk")
-armorReduction = 3
 metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
-
-[sub_resource type="Resource" id="Resource_jposd"]
-script = ExtResource("8_gx5c0")
-icon = ExtResource("10_gx5c0")
-damage_type = 2
-metadata/_custom_type_script = "uid://bolymwf31wy6o"
 
 [sub_resource type="Resource" id="Resource_0ff21"]
 script = ExtResource("11_c7kuk")
@@ -72,15 +66,15 @@ name = "Enemy2"
 icon = ExtResource("12_c7kuk")
 metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7kuk"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ff21"]
 bg_color = Color(0.14, 0.14, 0.14, 1)
 
-[node name="Fight" type="CanvasLayer" node_paths=PackedStringArray("friendly", "enemies")]
+[node name="Fight" type="CanvasLayer" node_paths=PackedStringArray("characters")]
 script = ExtResource("1_4n6yy")
-frienlyColor = Color(0.76550007, 1, 0.32999998, 1)
-enemyColor = Color(1, 0.32333338, 0.3, 1)
-friendly = [NodePath("Player"), NodePath("Player2")]
-enemies = [NodePath("Enemy"), NodePath("Enemy2")]
+characters = [NodePath("Player"), NodePath("Player2"), NodePath("Enemy"), NodePath("Enemy2")]
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(384.31415, 249.98807)
@@ -89,38 +83,38 @@ scale = Vector2(4.1831183, 994.6487)
 texture = SubResource("GradientTexture1D_kikd7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(144, 224)
+position = Vector2(164, 205)
 tile_map_data = PackedByteArray("AAAEAPH/AAAEAAAAAAAEAPL/AAAEAAAAAAAEAPP/AAAEAAAAAAAEAPT/AAAEAAAAAAAEAPX/AAAEAAAAAAAEAPb/AAAEAAAAAAAEAPf/AAAEAAAAAAAEAPj/AAAEAAAAAAAEAPn/AAAEAAAAAAAEAPr/AAAEAAAAAAAEAPv/AAAEAAAAAAAEAPz/AAAEAAAAAAAEAP3/AAAEAAAAAAAEAP7/AAAEAAAAAAAEAP//AAAEAAAAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAQAAAAEAAAAAAAEAAUAAAAEAAAAAAAEAAYAAAAEAAAAAAAFAPH/AAADAAAAAAAFAPL/AAADAAAAAAAFAPP/AAADAAAAAAAFAPT/AAADAAAAAAAFAPX/AAADAAAAAAAFAPb/AAADAAAAAAAFAPf/AAADAAAAAAAFAPj/AAADAAAAAAAFAPn/AAADAAAAAAAFAPr/AAADAAAAAAAFAPv/AAADAAAAAAAFAPz/AAADAAAAAAAFAP3/AAADAAAAAAAFAP7/AAADAAAAAAAFAP//AAADAAAAAAAFAAAAAAADAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAAFAAYAAAADAAAAAAAGAPH/AAAAAAIAAAAGAPL/AAAAAAIAAAAGAPP/AAAAAAIAAAAGAPT/AAAAAAIAAAAGAPX/AAAAAAIAAAAGAPb/AAAAAAIAAAAGAPf/AAAAAAIAAAAGAPj/AAAAAAIAAAAGAPn/AAAAAAIAAAAGAPr/AAAAAAIAAAAGAPv/AAAAAAIAAAAGAPz/AAAAAAIAAAAGAP3/AAAAAAIAAAAGAP7/AAAAAAIAAAAGAP//AAAAAAIAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAHAPH/AQADAAIAAAAHAPL/AQABAAQAAAAHAPP/AQABAAQAAAAHAPT/AQADAAIAAAAHAPX/AQADAAIAAAAHAPb/AQAAAAQAAAAHAPf/AQABAAQAAAAHAPj/AQADAAIAAAAHAPn/AQADAAIAAAAHAPr/AQADAAIAAAAHAPv/AQACAAIAAAAHAPz/AQABAAQAAAAHAP3/AQAAAAQAAAAHAP7/AQABAAQAAAAHAP//AQADAAIAAAAHAAAAAQABAAQAAAAHAAEAAQADAAIAAAAHAAIAAQABAAQAAAAHAAMAAQABAAQAAAAHAAQAAQABAAQAAAAHAAUAAQACAAIAAAAHAAYAAQABAAQAAAAIAPH/AQAAAAQAAAAIAPL/AQADAAIAAAAIAPP/AQADAAIAAAAIAPT/AQACAAIAAAAIAPX/AQADAAIAAAAIAPb/AQADAAIAAAAIAPf/AQABAAQAAAAIAPj/AQABAAQAAAAIAPn/AQAAAAQAAAAIAPr/AQABAAQAAAAIAPv/AQACAAIAAAAIAPz/AQADAAIAAAAIAP3/AQADAAIAAAAIAP7/AQAAAAQAAAAIAP//AQAAAAQAAAAIAAAAAQADAAIAAAAIAAEAAQADAAIAAAAIAAIAAQAAAAQAAAAIAAMAAQABAAQAAAAIAAQAAQABAAQAAAAIAAUAAQABAAQAAAAIAAYAAQACAAIAAAACAPH/AQAAAAQAAAACAPL/AQACAAIAAAACAPP/AQADAAIAAAACAPT/AQAAAAQAAAACAPX/AQADAAIAAAACAPb/AQACAAIAAAACAPf/AQADAAIAAAACAPj/AQABAAQAAAACAPn/AQADAAIAAAACAPr/AQAAAAQAAAACAPv/AQAAAAQAAAACAPz/AQADAAIAAAACAP3/AQADAAIAAAACAP7/AQACAAIAAAACAP//AQADAAIAAAACAAAAAQADAAIAAAACAAEAAQACAAIAAAACAAIAAQABAAQAAAACAAMAAQAAAAQAAAACAAQAAQAAAAQAAAACAAUAAQAAAAQAAAACAAYAAQABAAQAAAADAPX/AQADAAIAAAADAPb/AQACAAIAAAADAPf/AQADAAIAAAADAPj/AQABAAQAAAADAPn/AQACAAIAAAADAPr/AQABAAQAAAADAPv/AQADAAIAAAADAPz/AQACAAIAAAADAP3/AQAAAAQAAAADAP7/AQACAAIAAAADAP//AQACAAIAAAADAAAAAQABAAQAAAADAAEAAQADAAIAAAADAAIAAQABAAQAAAADAAMAAQADAAIAAAADAAQAAQABAAQAAAADAAUAAQAAAAQAAAADAPH/AQABAAQAAAADAPL/AQACAAIAAAADAPP/AQABAAQAAAADAPT/AQABAAQAAAADAAYAAQACAAIAAAA=")
 tile_set = ExtResource("11_0ff21")
 
 [node name="TileMapLayer_walls" type="TileMapLayer" parent="."]
-position = Vector2(144, 224)
+position = Vector2(164, 208)
 tile_map_data = PackedByteArray("AAAEAPH/AAAEAAAAAAAEAPL/AAAEAAAAAAAEAPP/AAAEAAAAAAAEAPT/AAAEAAAAAAAEAPX/AAAEAAAAAAAEAPb/AAAEAAAAAAAEAPf/AAAEAAAAAAAEAPj/AAAEAAAAAAAEAPn/AAAEAAAAAAAEAPr/AAAEAAAAAAAEAPv/AAAEAAAAAAAEAPz/AAAEAAAAAAAEAP3/AAAEAAAAAAAEAP7/AAAEAAAAAAAEAP//AAAEAAAAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAQAAAAEAAAAAAAEAAUAAAAEAAAAAAAEAAYAAAAEAAAAAAAFAPH/AAADAAAAAAAFAPL/AAADAAAAAAAFAPP/AAADAAAAAAAFAPT/AAADAAAAAAAFAPX/AAADAAAAAAAFAPb/AAADAAAAAAAFAPf/AAADAAAAAAAFAPj/AAADAAAAAAAFAPn/AAADAAAAAAAFAPr/AAADAAAAAAAFAPv/AAADAAAAAAAFAPz/AAADAAAAAAAFAP3/AAADAAAAAAAFAP7/AAADAAAAAAAFAP//AAADAAAAAAAFAAAAAAADAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAAFAAYAAAADAAAAAAAGAPH/AAAAAAIAAAAGAPL/AAAAAAIAAAAGAPP/AAAAAAIAAAAGAPT/AAAAAAIAAAAGAPX/AAAAAAIAAAAGAPb/AAAAAAIAAAAGAPf/AAAAAAIAAAAGAPj/AAAAAAIAAAAGAPn/AAAAAAIAAAAGAPr/AAAAAAIAAAAGAPv/AAAAAAIAAAAGAPz/AAAAAAIAAAAGAP3/AAAAAAIAAAAGAP7/AAAAAAIAAAAGAP//AAAAAAIAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAHAPH/AQADAAIAAAAHAPL/AQABAAQAAAAHAPP/AQABAAQAAAAHAPT/AQADAAIAAAAHAPX/AQADAAIAAAAHAPb/AQAAAAQAAAAHAPf/AQABAAQAAAAHAPj/AQADAAIAAAAHAPn/AQADAAIAAAAHAPr/AQADAAIAAAAHAPv/AQACAAIAAAAHAPz/AQABAAQAAAAHAP3/AQAAAAQAAAAHAP7/AQABAAQAAAAHAP//AQADAAIAAAAHAAAAAQABAAQAAAAHAAEAAQADAAIAAAAHAAIAAQABAAQAAAAHAAMAAQABAAQAAAAHAAQAAQABAAQAAAAHAAUAAQACAAIAAAAHAAYAAQABAAQAAAAIAPH/AQAAAAQAAAAIAPL/AQADAAIAAAAIAPP/AQADAAIAAAAIAPT/AQACAAIAAAAIAPX/AQADAAIAAAAIAPb/AQADAAIAAAAIAPf/AQABAAQAAAAIAPj/AQABAAQAAAAIAPn/AQAAAAQAAAAIAPr/AQABAAQAAAAIAPv/AQACAAIAAAAIAPz/AQADAAIAAAAIAP3/AQADAAIAAAAIAP7/AQAAAAQAAAAIAP//AQAAAAQAAAAIAAAAAQADAAIAAAAIAAEAAQADAAIAAAAIAAIAAQAAAAQAAAAIAAMAAQABAAQAAAAIAAQAAQABAAQAAAAIAAUAAQABAAQAAAAIAAYAAQACAAIAAAACAPH/AgAAAAAAAAACAPL/AgAAAAAAAAACAPP/AgAAAAAAAAACAPT/AgAAAAAAAAACAPX/AgAAAAAAAAACAPb/AgAAAAAAAAACAPf/AgAAAAAAAAACAPj/AgAAAAAAAAACAPn/AgAAAAAAAAACAPr/AgAAAAAAAAACAPv/AgAAAAAAAAACAPz/AgAAAAAAAAACAP3/AgAAAAAAAAACAP7/AgAAAAAAAAACAP//AgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAACAAYAAgAAAAAAAAADAPX/AQADAAIAAAADAPb/AQACAAIAAAADAPf/AQADAAIAAAADAPj/AQABAAQAAAADAPn/AQACAAIAAAADAPr/AQABAAQAAAADAPv/AQADAAIAAAADAPz/AQACAAIAAAADAP3/AQAAAAQAAAADAP7/AQACAAIAAAADAP//AQACAAIAAAADAAAAAQABAAQAAAADAAEAAQADAAIAAAADAAIAAQABAAQAAAADAAMAAQADAAIAAAADAAQAAQABAAQAAAADAAUAAQAAAAQAAAADAPH/AQABAAQAAAADAPL/AQACAAIAAAADAPP/AQABAAQAAAADAPT/AQABAAQAAAADAAYAAQACAAIAAAA=")
 tile_set = ExtResource("11_0ff21")
 
 [node name="Player" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(192, 272)
+position = Vector2(212, 256)
 stats = SubResource("Resource_kikd7")
 abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_arq58")])
 
 [node name="Player2" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(217, 288)
+position = Vector2(237, 273)
 stats = SubResource("Resource_w723q")
 abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jjms2")])
 
 [node name="Enemy" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(432, 176)
+position = Vector2(452, 160)
 rotation = -3.1415927
 scale = Vector2(1, -1)
+script = ExtResource("8_c7kuk")
 stats = SubResource("Resource_c7kuk")
-abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jposd")])
 
 [node name="Enemy2" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(400, 160)
+position = Vector2(420, 144)
 rotation = -3.1415927
 scale = Vector2(1, -1)
+script = ExtResource("8_c7kuk")
 stats = SubResource("Resource_0ff21")
-abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jposd")])
 
 [node name="FightUI" type="Control" parent="."]
 layout_mode = 3
@@ -134,19 +128,18 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -1.0
-offset_right = -1.0
-offset_bottom = 64.0
+offset_bottom = 48.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c7kuk")
 
-[node name="IconHolder" type="HBoxContainer" parent="FightUI/TurnOrder"]
+[node name="IconHolder" type="Container" parent="FightUI/TurnOrder"]
 layout_mode = 0
-offset_left = 16.0
-offset_right = 624.0
-offset_bottom = 64.0
+anchor_left = 0.025
+anchor_right = 0.975
+anchor_bottom = 1.0
 size_flags_vertical = 4
 script = ExtResource("2_0ff21")
-iconWidth = 48
+metadata/_edit_use_anchors_ = true
 
 [node name="TurnOrderIcon" parent="FightUI/TurnOrder/IconHolder" instance=ExtResource("2_a67i2")]
 layout_mode = 2
@@ -160,14 +153,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -126.0
+offset_top = -160.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ff21")
 script = ExtResource("3_70rx3")
 
-[node name="EnemySelector" type="ItemList" parent="FightUI/DialogPanel" node_paths=PackedStringArray("prev")]
+[node name="TargetSelector" type="ItemList" parent="FightUI/DialogPanel" node_paths=PackedStringArray("prev")]
 visible = false
 layout_mode = 0
 offset_left = 322.0
@@ -186,10 +179,10 @@ prev = NodePath("../FightMenu/Abilities")
 
 [node name="FightMenu" type="BoxContainer" parent="FightUI/DialogPanel"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 16.0
 offset_top = 16.0
-offset_right = 608.0
-offset_bottom = 112.0
+offset_right = 623.0
+offset_bottom = 144.0
 
 [node name="Characters" type="ItemList" parent="FightUI/DialogPanel/FightMenu" node_paths=PackedStringArray("abilityMenu", "next")]
 layout_mode = 2
@@ -215,7 +208,7 @@ theme = ExtResource("4_70rx3")
 theme_override_font_sizes/font_size = 20
 allow_search = false
 script = ExtResource("6_h4a4a")
-next = NodePath("../../EnemySelector")
+next = NodePath("../../TargetSelector")
 prev = NodePath("../Characters")
 
 [node name="Inspector" type="ItemList" parent="FightUI/DialogPanel/FightMenu"]

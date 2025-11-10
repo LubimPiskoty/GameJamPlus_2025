@@ -5,6 +5,7 @@ class_name Character
 @export var abilities: Array[AbilityStats]
 
 @onready var sprite: Sprite2D = $Sprite2D
+const outlineShader: Shader = preload("res://Shaders/outline.gdshader")
 
 const SPEED = 300.0
 
@@ -32,18 +33,26 @@ func _physics_process(delta: float) -> void:
 
 
 func highlight(color: Color):
+	var mat := ShaderMaterial.new()
+	mat.shader = outlineShader
+	sprite.material = mat
 	sprite.material.set("shader_parameter/line_color", color)
 	sprite.material.set("shader_parameter/line_thickness", 1.0)
 
 func dehighlight():
-	sprite.material.set("shader_parameter/line_thickness", 0.0)
+	sprite.material = null
+
 
 
 func on_death():
 	print_debug(stats.name + " has died!")
 	_on_death.emit(self)
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	get_tree().create_timer(10.0).timeout.connect(queue_free)
+
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_BOUNCE).tween_property(sprite, "self_modulate", Color.RED, 1.0)
+	tween.set_trans(Tween.TRANS_BACK).tween_property(sprite, "modulate", Color.TRANSPARENT, 1.0)
+
 
 func on_armor_break():
 	#TODO: Add animation

@@ -8,20 +8,21 @@ class_name FightMenu
 @onready var menuHolder: Control = $FightMenu
 @onready var charMenu: KeyMenu = $FightMenu/Characters
 @onready var ablMenu: KeyMenu = $FightMenu/Abilities
-@onready var enmMenu: KeyMenu = $EnemySelector
+@onready var targetMenu: KeyMenu = $TargetSelector
 var dialogBalloon = preload("res://Systems/FightSystem/Prefabs/balloon.tscn")
 
 
-func DoTurn(characters: Array[Character], active: Array[Character]):
+func DoTurn(characters: Array[Character], active: Array[Character], all_targets: Array[Character]):
 	menuHolder.visible = true
 	while len(active):
 		charMenu.update_all(characters, active)
 		charMenu.set_process_input(true)
 		var source = await charMenu._on_selected
 		var ability = await ablMenu._on_selected
-		var target = await enmMenu._on_selected
 
-		#TODO: Make target selection based on the ability params
+		targetMenu.selectedAbility = ability
+		targetMenu.update(all_targets)
+		var target = await targetMenu._on_selected
 
 		var text = ability.use(source, target)
 		await DoDialog(text, true)

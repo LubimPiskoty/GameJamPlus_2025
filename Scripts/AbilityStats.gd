@@ -14,3 +14,7 @@ func use(source: Character, target: Character) -> String:
 	if target.stats.health == 0:
 		return target.stats.name + " has perished"
 	return source.stats.name + " is using ability " + name + " on " + target.stats.name
+
+func targetingFunc(target: Character) -> bool:
+	# Has to be enemy
+	return target is Enemy

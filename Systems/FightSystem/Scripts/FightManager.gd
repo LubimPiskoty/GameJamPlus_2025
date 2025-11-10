@@ -3,63 +3,64 @@ extends CanvasLayer
 @onready var fightMenu: FightMenu = $FightUI/DialogPanel
 @onready var turnOrderHolder: TurnOrder = $FightUI/TurnOrder/IconHolder
 
-@export var frienlyColor: Color = Color.GREEN_YELLOW
-@export var enemyColor: Color = Color.ORANGE_RED
-
-@export var friendly: Array[Character]
-@export var enemies: Array[Character]
-var turnOrder: Array[Character] = []
+@export var characters: Array[Character]
+var turnQueue: Array[Character] = []
 
 func _ready() -> void:
-	for l in [friendly, enemies]:
-		for c in l:
-			c.handle_input = false
-			c._on_death.connect(on_death)
+	for c in characters:
+		c.handle_input = false
+		c._on_death.connect(on_death)
 
-	if not len(friendly) or not len(enemies):
-		printerr("Friendly or Enemies array is empty!!")
-	for i in range(32):
-		turnOrder.append_array(friendly if i%2 else enemies)
-	
-	turnOrderHolder.create(turnOrder, turnOrder.map(func(x) -> Color: return frienlyColor if x in friendly else enemyColor))
+	if not len(characters):
+		printerr("Characters array is empty!!")
 
-	var timer: SceneTreeTimer = null
+	# Create turnQueue
+	for i in range(128):
+		turnQueue.append(characters[i % len(characters)])
+
+	turnOrderHolder.create(turnQueue)
+	startFight.call_deferred()
+
+func startFight():
 	while true:
 		var onTurn: Array[Character] = get_consecutive()
-		if onTurn[0] in friendly:
-			fightMenu.enmMenu.update(enemies, false, false)
-			await fightMenu.DoTurn(friendly, onTurn.duplicate())
+		if not onTurn[0] is Enemy:
+			await fightMenu.DoTurn(get_friendly(), onTurn.duplicate(), characters)
 		else:
 			for enemy in onTurn:
 				await fightMenu.DoDialog(enemy.stats.name + " has skipped it's turn")
-		if timer and timer.time_left > 0:
-			print("TOO FAST")
-			await timer.timeout
-		timer = turnOrderHolder.remove(len(onTurn))
+		turnOrderHolder.remove_from_front(onTurn)
+
+func get_friendly() -> Array[Character]:
+	var friendly : Array[Character] = []
+	for character in characters:
+		if not (character as Enemy):
+			friendly.append(character)
+	return friendly
 
 func get_consecutive() -> Array[Character]:
-	var consecutive: Array[Character] = [turnOrder.pop_front()]
-	var team = friendly if consecutive[0] in friendly else enemies
-	while turnOrder[0] in team:
-		consecutive.append(turnOrder.pop_front())
+	assert(len(turnQueue) > 0, "TurnQueue is empty!")
+	var consecutive: Array[Character] = [turnQueue.pop_front()]
+	var isEnemy : bool = consecutive[0] is Enemy
+	while len(turnQueue) and (turnQueue[0] is Enemy) == isEnemy:
+		consecutive.append(turnQueue.pop_front())
 	return consecutive
 
 		
 func on_death(character: Character):
-	var idx: int # Clear turnOrder
+	turnOrderHolder.remove_all(character)
+
+	var idx: int # Clear turnQueue
 	while true:
-		idx = turnOrder.find(character)
+		idx = turnQueue.find(character)
 		if idx == -1:
 			break
-		turnOrder.remove_at(idx)
+		turnQueue.remove_at(idx)
 	
-	idx = enemies.find(character)
+	idx = characters.find(character)
 	if idx != -1:
-		enemies.remove_at(idx)
-
-	idx = friendly.find(character)
-	if idx != -1:
-		friendly.remove_at(idx)
+		characters.remove_at(idx)
+	
 
 
 #TODO: Make turn order UI updater

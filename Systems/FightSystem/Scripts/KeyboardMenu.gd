@@ -38,8 +38,8 @@ func cycle(dx: int, highlight: bool = true,  showInspector: bool = true):
 			self.selectedVar = self.list[self.selectedIdx]
 			found = true
 			break
-	if not found:
-		printerr("Could't find any selectable item!!")
+		
+	assert(found, "Could't find any selectable item!!")
 
 	
 	if showInspector:
