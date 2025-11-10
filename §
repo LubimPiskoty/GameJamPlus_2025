@@ -11,11 +11,6 @@ extends CanvasLayer
 var turnOrder: Array[Character] = []
 
 func _ready() -> void:
-	for l in [friendly, enemies]:
-		for c in l:
-			c.handle_input = false
-			c._on_death.connect(on_death)
-
 	if not len(friendly) or not len(enemies):
 		printerr("Friendly or Enemies array is empty!!")
 	for i in range(32):
@@ -46,21 +41,10 @@ func get_consecutive() -> Array[Character]:
 
 		
 func on_death(character: Character):
-	var idx: int # Clear turnOrder
-	while true:
+	var idx
+	while idx != -1:
 		idx = turnOrder.find(character)
-		if idx == -1:
-			break
 		turnOrder.remove_at(idx)
-	
-	idx = enemies.find(character)
-	if idx != -1:
-		enemies.remove_at(idx)
-
-	idx = friendly.find(character)
-	if idx != -1:
-		friendly.remove_at(idx)
-
 
 #TODO: Make turn order UI updater
 #TODO: Make AI

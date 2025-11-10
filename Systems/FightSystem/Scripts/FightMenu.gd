@@ -13,6 +13,7 @@ var dialogBalloon = preload("res://Systems/FightSystem/Prefabs/balloon.tscn")
 
 
 func DoTurn(characters: Array[Character], active: Array[Character]):
+	menuHolder.visible = true
 	while len(active):
 		charMenu.update_all(characters, active)
 		charMenu.set_process_input(true)
@@ -20,11 +21,16 @@ func DoTurn(characters: Array[Character], active: Array[Character]):
 		var ability = await ablMenu._on_selected
 		var target = await enmMenu._on_selected
 
-		print(source.stats.name + " is using " + ability.name + " on " + target.stats.name)
+		#TODO: Make target selection based on the ability params
+
+		var text = ability.use(source, target)
+		await DoDialog(text, true)
+
 		active.pop_at(active.find(source))
 
-func DoDialog(string: String):
+func DoDialog(string: String, showMenu: bool = false):
 	menuHolder.visible = false
 	DialogueManager.show_dialogue_balloon_scene(dialogBalloon, DialogueManager.create_resource_from_text(string))
 	await DialogueManager.dialogue_ended
-	menuHolder.visible = true
+	if showMenu:
+		menuHolder.visible = true
