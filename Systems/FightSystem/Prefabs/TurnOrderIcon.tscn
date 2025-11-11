@@ -1,22 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://cocuah8dgswb3"]
+[gd_scene load_steps=6 format=3 uid="uid://cocuah8dgswb3"]
 
-[ext_resource type="Texture2D" uid="uid://bpvoxo4mxm4wt" path="res://icon.svg" id="1_1klfq"]
+[sub_resource type="Gradient" id="Gradient_1klfq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.39215687)
 
-[node name="TurnOrderIcon" type="Control"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 3
-anchor_right = 0.1
-anchor_bottom = 0.13333334
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i1xnd"]
+gradient = SubResource("Gradient_1klfq")
+width = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_llkdf"]
+
+[sub_resource type="Gradient" id="Gradient_llkdf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.9490741)
+colors = PackedColorArray(0, 0, 0, 0.007843138, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1klfq"]
+gradient = SubResource("Gradient_llkdf")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[node name="TurnIcon" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_i1xnd")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="AvatarIcon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_1klfq")
+texture = SubResource("PlaceholderTexture2D_llkdf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1klfq")
 expand_mode = 1
