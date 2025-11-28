@@ -1,12 +1,14 @@
 ~ find_angel
-Vesper: *oh no it's an angel!*
+Vesper: There is a noble angel standing before the altar. On the altar, there is a young girl. She possesses both demonic and angelic traits. She seems to be in great agony.
 - Sneak away
 	*Angel didn't notice you..*
-- Suprise attack
-	Angel: Intruter found!!
-	do fight()
-- Introduce yourself
-	Vesper: Hello, my name is Ves-
-	Angel: You're a demon?!
+- Save The Girl
+	Girl:    "Let go of me! I haven’t done anything wrong!"
+	Angel:    "Silence! I will not listen to the words of an abomination like you!"
+	Girl:    "I am not an abomination!"
+	Angel:    "Angelic wings and halo combined with these filthy demonic horns and tail?! I have never seen anything more disgusting in my life. You are a bad omen and therefore shall be ritually executed."
+	Vesper:    "Hey! Let go of her! She is just a child."
+	Angel:    "What??! You dare to call this abomination—this… this PURE EVIL—a child?"
+	Vesper: "You truly must have lost your mind. You shall be purged by my divine blade!"
 	do fight()
 => END
