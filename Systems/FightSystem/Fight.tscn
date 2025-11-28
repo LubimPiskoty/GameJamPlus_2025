@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://un01f78supte"]
+[gd_scene load_steps=28 format=4 uid="uid://un01f78supte"]
 
 [ext_resource type="Script" uid="uid://bab2lls1yolqc" path="res://Systems/FightSystem/Scripts/FightManager.gd" id="1_4n6yy"]
 [ext_resource type="Script" uid="uid://dp7jxpflinrii" path="res://Systems/FightSystem/Scripts/TurnOrder.gd" id="2_0ff21"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://2vbqcmried47" path="res://Prefabs/KeyComboUI.tscn" id="4_0sxkw"]
 [ext_resource type="Theme" uid="uid://dyn2de25dn40h" path="res://Assets/UI_Theme.tres" id="4_70rx3"]
 [ext_resource type="PackedScene" uid="uid://br038cjsx7k78" path="res://Systems/FightSystem/Prefabs/balloon.tscn" id="4_a67i2"]
+[ext_resource type="Texture2D" uid="uid://df7j5odht4wul" path="res://Assets/Sprites/Secondary_icon.png" id="4_kikd7"]
 [ext_resource type="Script" uid="uid://dbc83lq0uf6xs" path="res://Systems/FightSystem/Scripts/CharacterList.gd" id="5_7np0b"]
 [ext_resource type="Script" uid="uid://hbakf3m5lo4v" path="res://Systems/FightSystem/Scripts/TargetSelector.gd" id="5_c7kuk"]
 [ext_resource type="Script" uid="uid://b5286saishs7x" path="res://Systems/FightSystem/Scripts/AbilityList.gd" id="6_h4a4a"]
 [ext_resource type="PackedScene" uid="uid://b4hpjfycitkn8" path="res://Prefabs/Character.tscn" id="7_q8rm7"]
-[ext_resource type="Texture2D" uid="uid://bp0j06kt5bccs" path="res://Assets/Icons/ShieldIcon.png" id="8_0ff21"]
+[ext_resource type="Texture2D" uid="uid://b0yxgqria0qrn" path="res://Assets/Sprites/Vesper_Mc.png" id="8_0ff21"]
 [ext_resource type="Script" uid="uid://c1nnkpj88p5gn" path="res://Systems/FightSystem/Scripts/Enemy.gd" id="8_c7kuk"]
 [ext_resource type="Script" uid="uid://bolymwf31wy6o" path="res://Scripts/AbilityStats.gd" id="8_gx5c0"]
 [ext_resource type="Texture2D" uid="uid://tc06bvi34jtt" path="res://Assets/Icons/SwordIcon.png" id="9_jposd"]
@@ -29,8 +30,8 @@ gradient = SubResource("Gradient_0ff21")
 
 [sub_resource type="Resource" id="Resource_kikd7"]
 script = ExtResource("11_c7kuk")
-name = "Jano"
-icon = ExtResource("12_c7kuk")
+name = "Vesper"
+icon = ExtResource("4_kikd7")
 metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
 
 [sub_resource type="Resource" id="Resource_arq58"]
@@ -40,31 +41,18 @@ icon = ExtResource("9_jposd")
 damage = 5
 metadata/_custom_type_script = "uid://bolymwf31wy6o"
 
-[sub_resource type="Resource" id="Resource_w723q"]
-script = ExtResource("11_c7kuk")
-name = "Dano"
-icon = ExtResource("12_c7kuk")
-metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
-
-[sub_resource type="Resource" id="Resource_jjms2"]
-script = ExtResource("8_gx5c0")
-name = "Smash"
-icon = ExtResource("8_0ff21")
-damage = 5
-damage_type = 2
-metadata/_custom_type_script = "uid://bolymwf31wy6o"
-
 [sub_resource type="Resource" id="Resource_c7kuk"]
 script = ExtResource("11_c7kuk")
-name = "Enemy1"
+name = "Angel"
 icon = ExtResource("12_c7kuk")
 metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
 
-[sub_resource type="Resource" id="Resource_0ff21"]
-script = ExtResource("11_c7kuk")
-name = "Enemy2"
-icon = ExtResource("12_c7kuk")
-metadata/_custom_type_script = "uid://hp8vy6m6k1gq"
+[sub_resource type="Resource" id="Resource_w723q"]
+script = ExtResource("8_gx5c0")
+name = "Holy Spirit"
+icon = ExtResource("9_jposd")
+damage = 6
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7kuk"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
@@ -74,7 +62,7 @@ bg_color = Color(0.14, 0.14, 0.14, 1)
 
 [node name="Fight" type="CanvasLayer" node_paths=PackedStringArray("characters")]
 script = ExtResource("1_4n6yy")
-characters = [NodePath("Player"), NodePath("Player2"), NodePath("Enemy"), NodePath("Enemy2")]
+characters = [NodePath("Player"), NodePath("Enemy")]
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(384.31415, 249.98807)
@@ -97,24 +85,20 @@ position = Vector2(212, 256)
 stats = SubResource("Resource_kikd7")
 abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_arq58")])
 
-[node name="Player2" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(237, 273)
-stats = SubResource("Resource_w723q")
-abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_jjms2")])
+[node name="Sprite2D" parent="Player" index="1"]
+position = Vector2(11, -7)
+texture = ExtResource("8_0ff21")
+
+[node name="Shadow" parent="Player/Sprite2D" index="0"]
+position = Vector2(0, 26)
 
 [node name="Enemy" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(452, 160)
+position = Vector2(445, 153)
 rotation = -3.1415927
 scale = Vector2(1, -1)
 script = ExtResource("8_c7kuk")
 stats = SubResource("Resource_c7kuk")
-
-[node name="Enemy2" parent="." instance=ExtResource("7_q8rm7")]
-position = Vector2(420, 144)
-rotation = -3.1415927
-scale = Vector2(1, -1)
-script = ExtResource("8_c7kuk")
-stats = SubResource("Resource_0ff21")
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_w723q")])
 
 [node name="FightUI" type="Control" parent="."]
 layout_mode = 3
@@ -225,6 +209,9 @@ fixed_icon_size = Vector2i(28, 28)
 
 [node name="FightBalloon" parent="FightUI/DialogPanel" instance=ExtResource("4_a67i2")]
 
-[node name="KeyComboUI" parent="." instance=ExtResource("4_0sxkw")]
+[node name="KeyCombo" parent="." instance=ExtResource("4_0sxkw")]
+unique_name_in_owner = true
 visible = false
 top_level = true
+
+[editable path="Player"]

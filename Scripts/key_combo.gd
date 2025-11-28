@@ -11,14 +11,16 @@ extends Control
 func doComboString(characters: String, time: float) -> int:
 	self.visible = true
 	
+	characters = characters.replace(" ", "")
 	label.text = characters
+	progress.value = 0
 	await get_tree().create_timer(0.5).timeout
 	
 	var startTime = Time.get_ticks_msec()
 	var last_char = ""
 	var i = 0
 	while i < characters.length() and (startTime + time*1000 - Time.get_ticks_msec()) > 0:
-		var char = characters[i]
+		var char: String = characters[i].capitalize()
 		if char == last_char:
 			if not Input.is_key_pressed(char.unicode_at(0) as Key):
 				last_char = ""

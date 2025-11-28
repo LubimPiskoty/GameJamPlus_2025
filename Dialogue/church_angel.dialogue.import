@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b0ap3oijb0djj"
+path="res://.godot/imported/church_angel.dialogue-0c0d764a23598d020aadfee854c785a3.tres"
+
+[deps]
+
+source_file="res://Dialogue/church_angel.dialogue"
+dest_files=["res://.godot/imported/church_angel.dialogue-0c0d764a23598d020aadfee854c785a3.tres"]
+
+[params]
+
+defaults=true

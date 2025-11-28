@@ -24,7 +24,7 @@ func DoTurn(characters: Array[Character], active: Array[Character], all_targets:
 		targetMenu.update(all_targets)
 		var target = await targetMenu._on_selected
 
-		var text = ability.use(source, target)
+		var text = await ability.use(source, target, %KeyCombo)
 		await DoDialog(text, true)
 
 		active.pop_at(active.find(source))

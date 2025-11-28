@@ -1,0 +1,12 @@
+~ find_angel
+Vesper: *oh no it's an angel!*
+- Sneak away
+	*Angel didn't notice you..*
+- Suprise attack
+	Angel: Intruter found!!
+	do fight()
+- Introduce yourself
+	Vesper: Hello, my name is Ves-
+	Angel: You're a demon?!
+	do fight()
+=> END
