@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dbu6i3b7n7uno"]
+
+[resource]
+resource_name = "Kamene"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.50264, 0.50264, 0.50264, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

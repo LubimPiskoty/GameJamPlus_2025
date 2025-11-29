@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxivb3nif8rd0"]
+
+[ext_resource type="Texture2D" uid="uid://ds5lsoh1bi1ra" path="res://Assets/Models/Textures/Strecha_Tex.png" id="1_ph0es"]
+
+[resource]
+resource_name = "Material"
+albedo_texture = ExtResource("1_ph0es")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

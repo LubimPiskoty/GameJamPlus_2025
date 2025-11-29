@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yxgqria0qrn"
-path.s3tc="res://.godot/imported/Vesper_Mc.png-be37410e934a44ce62f926f2ffba3a19.s3tc.ctex"
+uid="uid://dvfyqmncmoew7"
+path.s3tc="res://.godot/imported/Drevo_Tex.png-63849c42c00d301df00528977887a32f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Sprites/Vesper_Mc.png"
-dest_files=["res://.godot/imported/Vesper_Mc.png-be37410e934a44ce62f926f2ffba3a19.s3tc.ctex"]
+source_file="res://Assets/Models/Textures/Drevo_Tex.png"
+dest_files=["res://.godot/imported/Drevo_Tex.png-63849c42c00d301df00528977887a32f.s3tc.ctex"]
 
 [params]
 
