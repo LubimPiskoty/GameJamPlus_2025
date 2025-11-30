@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://hbakf3m5lo4v" path="res://Systems/FightSystem/Scripts/TargetSelector.gd" id="5_c7kuk"]
 [ext_resource type="Script" uid="uid://b5286saishs7x" path="res://Systems/FightSystem/Scripts/AbilityList.gd" id="6_h4a4a"]
 [ext_resource type="PackedScene" uid="uid://b4hpjfycitkn8" path="res://Prefabs/Character.tscn" id="7_q8rm7"]
-[ext_resource type="Texture2D" uid="uid://b0yxgqria0qrn" path="res://Assets/Sprites/Vesper_Mc.png" id="8_0ff21"]
 [ext_resource type="Script" uid="uid://c1nnkpj88p5gn" path="res://Systems/FightSystem/Scripts/Enemy.gd" id="8_c7kuk"]
 [ext_resource type="Script" uid="uid://bolymwf31wy6o" path="res://Scripts/AbilityStats.gd" id="8_gx5c0"]
+[ext_resource type="Texture2D" uid="uid://ddkgsxvv4585e" path="res://Assets/Sprites/netopier.png" id="8_kikd7"]
 [ext_resource type="Texture2D" uid="uid://tc06bvi34jtt" path="res://Assets/Icons/SwordIcon.png" id="9_jposd"]
 [ext_resource type="TileSet" uid="uid://g1fgtahkxoh" path="res://Assets/Tiles/tiles_set.tres" id="11_0ff21"]
 [ext_resource type="Script" uid="uid://hp8vy6m6k1gq" path="res://Scripts/CharacterStats.gd" id="11_c7kuk"]
@@ -87,7 +87,7 @@ abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_arq58")])
 
 [node name="Sprite2D" parent="Player" index="1"]
 position = Vector2(11, -7)
-texture = ExtResource("8_0ff21")
+texture = ExtResource("8_kikd7")
 
 [node name="Shadow" parent="Player/Sprite2D" index="0"]
 position = Vector2(0, 26)

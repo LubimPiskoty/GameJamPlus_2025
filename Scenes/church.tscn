@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=4 uid="uid://b6jhsscd0ad13"]
 
 [ext_resource type="TileSet" uid="uid://g1fgtahkxoh" path="res://Assets/Tiles/tiles_set.tres" id="1_uxvc0"]
-[ext_resource type="Texture2D" uid="uid://b0yxgqria0qrn" path="res://Assets/Sprites/Vesper_Mc.png" id="2_p1f3h"]
 [ext_resource type="Script" uid="uid://dc43cs5txsaxs" path="res://Scripts/Character.gd" id="3_4ofem"]
+[ext_resource type="Texture2D" uid="uid://ddkgsxvv4585e" path="res://Assets/Sprites/netopier.png" id="3_xfrio"]
 [ext_resource type="Texture2D" uid="uid://cy7txafik5fj6" path="res://Assets/Sprites/AngleAI.png" id="4_4ofem"]
 [ext_resource type="Script" uid="uid://dutb6k6g42rcx" path="res://Cutscenes/Church1.gd" id="5_4bdyu"]
 [ext_resource type="Resource" uid="uid://b0ap3oijb0djj" path="res://Dialogue/church_angel.dialogue" id="6_h0a4c"]
 [ext_resource type="Texture2D" uid="uid://7oyf3may5whe" path="res://Assets/Sprites/info.png" id="7_5wjb2"]
 [ext_resource type="Script" uid="uid://dvi878pquvk7b" path="res://Scripts/Info_Dialogue.gd" id="8_qqu8f"]
-[ext_resource type="Texture2D" uid="uid://boee3gf2ijide" path="res://Assets/Sprites/south-east.png" id="9_qqu8f"]
+[ext_resource type="Texture2D" uid="uid://cwlbxic2q0dlt" path="res://Assets/Sprites/tied_mina-0001.png" id="9_r77vr"]
 [ext_resource type="Texture2D" uid="uid://dehoij8r1v7by" path="res://Assets/Sprites/NPC_1.png" id="10_gw6bf"]
 [ext_resource type="Script" uid="uid://7wglf0lyxhio" path="res://Scripts/npc_dialogue.gd" id="11_xfrio"]
 
@@ -51,7 +51,7 @@ metadata/player = false
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(-0.99999994, 9.999999)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_p1f3h")
+texture = ExtResource("3_xfrio")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-2, 21)
@@ -113,10 +113,9 @@ shape = SubResource("CircleShape2D_gw6bf")
 script = ExtResource("8_qqu8f")
 
 [node name="Mina" type="Sprite2D" parent="."]
-position = Vector2(271, -218.00002)
-rotation = -1.5707964
+position = Vector2(268, -190)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_qqu8f")
+texture = ExtResource("9_r77vr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-583.5, -98)
