@@ -1,14 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://qnq4ms3k1bmq"]
+[gd_scene load_steps=6 format=3 uid="uid://qnq4ms3k1bmq"]
 
-[ext_resource type="Script" uid="uid://dclrc1cda41uk" path="res://Scripts/GameManager.gd" id="1_2nsi2"]
-[ext_resource type="PackedScene" uid="uid://2vbqcmried47" path="res://Prefabs/KeyComboUI.tscn" id="1_fi1yh"]
+[ext_resource type="Texture2D" uid="uid://b0yxgqria0qrn" path="res://Assets/Sprites/Vesper_Mc.png" id="1_2nsi2"]
+[ext_resource type="PackedScene" uid="uid://cvrudhtc5pvwp" path="res://Assets/Models/domcekosGJ.fbx" id="1_fi1yh"]
+[ext_resource type="Script" uid="uid://rh0b6m26cuwj" path="res://Scripts/Movement3D.gd" id="1_v1tjy"]
 
-[node name="TestingScene" type="Node2D"]
-script = ExtResource("1_2nsi2")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fi1yh"]
+radius = 0.21289063
+height = 0.5288086
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mmin"]
+albedo_color = Color(0.22343999, 0.63, 0.075600006, 1)
 
-[node name="KeyComboUI" parent="." instance=ExtResource("1_fi1yh")]
-visible = false
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="TestingScene" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+stretch_shrink = 4
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+oversampling = false
+size = Vector2i(160, 120)
+render_target_update_mode = 4
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 3.754798, 0.21416795, -1.3875315)
+script = ExtResource("1_v1tjy")
+SPEED = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0075683594, 0)
+shape = SubResource("CapsuleShape3D_fi1yh")
+
+[node name="Sprite3D" type="Sprite3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+billboard = 1
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("1_2nsi2")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660255, 0.015621424, 1.9143583, 3.2547162)
+current = true
+fov = 20.0
+size = 2.5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+use_collision = true
+size = Vector3(100, 0.001, 100)
+material = SubResource("StandardMaterial3D_8mmin")
+
+[node name="domcekosGJ" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_fi1yh")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.6554663, 0, -1.842392)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.07315115, -0.6431127, 0.7622696, -0.2373769, 0.73112476, 0.63961613, -0.96865946, -0.22773385, -0.09917748, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 20.3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.402902, 0, 0, 0, 1, 0, 0, 0, 0.41502237, 4.2831388, 0, -2.1355958)
