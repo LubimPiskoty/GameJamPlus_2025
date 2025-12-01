@@ -74,11 +74,13 @@ func on_turn_end():
 	if characters.all(func(x): return x is Enemy):
 		print("FIGHT END ENEMY WON")
 		is_running = false
-		fightMenu.DoDialog("The angel has killed Vesper...")
+		await fightMenu.DoDialog("The angel has killed Vesper...")
+		get_tree().change_scene_to_file("res://Scenes/church.tscn")
 	if characters.all(func(x): return x is not Enemy):
 		print("FIGHT END PLAYER WON")
 		is_running = false
-		fightMenu.DoDialog("Vesper has slain the angel!!")
+		await fightMenu.DoDialog("Vesper has slain the angel!!") 
+		get_tree().change_scene_to_file("res://Scenes/church.tscn")
 
 #TODO: Make turn order UI updater
 #TODO: Make AI

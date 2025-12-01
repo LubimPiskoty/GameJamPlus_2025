@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://un01f78supte"]
+[gd_scene load_steps=29 format=4 uid="uid://un01f78supte"]
 
 [ext_resource type="Script" uid="uid://bab2lls1yolqc" path="res://Systems/FightSystem/Scripts/FightManager.gd" id="1_4n6yy"]
 [ext_resource type="Script" uid="uid://dp7jxpflinrii" path="res://Systems/FightSystem/Scripts/TurnOrder.gd" id="2_0ff21"]
@@ -39,6 +39,13 @@ script = ExtResource("8_gx5c0")
 name = "Slash"
 icon = ExtResource("9_jposd")
 damage = 5
+metadata/_custom_type_script = "uid://bolymwf31wy6o"
+
+[sub_resource type="Resource" id="Resource_jjms2"]
+script = ExtResource("8_gx5c0")
+name = "Pierce"
+damage = 4
+damage_type = 0
 metadata/_custom_type_script = "uid://bolymwf31wy6o"
 
 [sub_resource type="Resource" id="Resource_c7kuk"]
@@ -83,7 +90,7 @@ tile_set = ExtResource("11_0ff21")
 [node name="Player" parent="." instance=ExtResource("7_q8rm7")]
 position = Vector2(212, 256)
 stats = SubResource("Resource_kikd7")
-abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_arq58")])
+abilities = Array[ExtResource("8_gx5c0")]([SubResource("Resource_arq58"), SubResource("Resource_jjms2")])
 
 [node name="Sprite2D" parent="Player" index="1"]
 position = Vector2(11, -7)
