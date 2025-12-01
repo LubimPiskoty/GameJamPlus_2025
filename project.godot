@@ -73,7 +73,7 @@ ui={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/untitled.dialogue", "res://Dialogue/dialogue.dialogue", "res://Dialogue/church_angel.dialogue", "res://Dialogue/info.dialogue", "res://Dialogue/npc_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/dialogue.dialogue", "res://Dialogue/church_angel.dialogue", "res://Dialogue/info.dialogue", "res://Dialogue/npc_dialogue.dialogue", "res://Dialogue/babka_dialog.dialogue", "res://Dialogue/Begger_dialog.dialogue")
 
 [rendering]
 

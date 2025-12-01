@@ -1,0 +1,7 @@
+~ start
+Beggar: "Please! Spare a gold for an old fool. I can’t feel my legs anymore."
+- Give the old man a coin.
+	*You threw a single silver coin to the beggar. He caught it with surprising agility.*
+- Don’t give the beggar anything.
+	*You decided to save all the coins for yourself. After all, the beggar must have gambled all of his money away. Right?*
+=> END

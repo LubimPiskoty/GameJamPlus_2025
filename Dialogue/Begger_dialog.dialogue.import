@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://7uatkghiei45"
+path="res://.godot/imported/Begger_dialog.dialogue-1100cd7eed232e234f60e34a79768116.tres"
+
+[deps]
+
+source_file="res://Dialogue/Begger_dialog.dialogue"
+dest_files=["res://.godot/imported/Begger_dialog.dialogue-1100cd7eed232e234f60e34a79768116.tres"]
+
+[params]
+
+defaults=true

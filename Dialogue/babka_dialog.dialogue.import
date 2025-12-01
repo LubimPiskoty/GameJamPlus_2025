@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cg08hn4akl2l6"
+path="res://.godot/imported/babka_dialog.dialogue-81f43451491347053f286f7b3b8b40f2.tres"
+
+[deps]
+
+source_file="res://Dialogue/babka_dialog.dialogue"
+dest_files=["res://.godot/imported/babka_dialog.dialogue-81f43451491347053f286f7b3b8b40f2.tres"]
+
+[params]
+
+defaults=true
