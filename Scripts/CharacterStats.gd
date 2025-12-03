@@ -47,4 +47,3 @@ func changeArmor(amount: int):
 		_on_armor_break.emit()
 
 	armor = clampi(armor + amount, 0, max_armor)
-

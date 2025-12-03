@@ -2,16 +2,16 @@
 
 [ext_resource type="TileSet" uid="uid://g1fgtahkxoh" path="res://Assets/Tiles/tiles_set.tres" id="1_uxvc0"]
 [ext_resource type="Script" uid="uid://dc43cs5txsaxs" path="res://Scripts/Character.gd" id="3_4ofem"]
-[ext_resource type="Texture2D" uid="uid://b0yxgqria0qrn" path="res://Assets/Sprites/Vesper_Mc.png" id="3_jk1kv"]
+[ext_resource type="Texture2D" uid="uid://brlinf3qn8ndp" path="res://Assets/Sprites/netopierwalk-Sheet.png" id="3_jk1kv"]
 [ext_resource type="Texture2D" uid="uid://cy7txafik5fj6" path="res://Assets/Sprites/AngleAI.png" id="4_4ofem"]
 [ext_resource type="Script" uid="uid://dutb6k6g42rcx" path="res://Cutscenes/Church1.gd" id="5_4bdyu"]
 [ext_resource type="Resource" uid="uid://b0ap3oijb0djj" path="res://Dialogue/church_angel.dialogue" id="6_h0a4c"]
-[ext_resource type="Texture2D" uid="uid://7oyf3may5whe" path="res://Assets/Sprites/info.png" id="7_5wjb2"]
+[ext_resource type="Texture2D" uid="uid://bilgdlmngtfv2" path="res://Assets/Sprites/tutobat.png" id="7_jk1kv"]
 [ext_resource type="Script" uid="uid://dvi878pquvk7b" path="res://Scripts/Info_Dialogue.gd" id="8_qqu8f"]
 [ext_resource type="Texture2D" uid="uid://cwlbxic2q0dlt" path="res://Assets/Sprites/tied_mina-0001.png" id="9_r77vr"]
 [ext_resource type="Texture2D" uid="uid://dehoij8r1v7by" path="res://Assets/Sprites/NPC_1.png" id="10_gw6bf"]
 [ext_resource type="Script" uid="uid://7wglf0lyxhio" path="res://Scripts/npc_dialogue.gd" id="11_xfrio"]
-[ext_resource type="Texture2D" uid="uid://4nvtyvj0hki8" path="res://Assets/Sprites/Babka.png" id="12_tgbnn"]
+[ext_resource type="Texture2D" uid="uid://cx1flgaxj4p7w" path="res://Assets/Sprites/NPC_2.png" id="12_jk1kv"]
 [ext_resource type="Script" uid="uid://dqobi638ae5m3" path="res://Scripts/babka_dialog.gd" id="13_jk1kv"]
 [ext_resource type="Texture2D" uid="uid://b16crn6k6mpgu" path="res://Assets/Sprites/begger.png" id="14_ajlnp"]
 [ext_resource type="Script" uid="uid://c2ra1cc50crq1" path="res://Scripts/begger_dialog.gd" id="15_jk1kv"]
@@ -61,6 +61,7 @@ metadata/player = false
 position = Vector2(-0.99999994, 9.999999)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_jk1kv")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-2, 21)
@@ -111,7 +112,7 @@ angel_dialog = ExtResource("6_h0a4c")
 [node name="Info" type="Sprite2D" parent="."]
 position = Vector2(-380.00003, 91.00001)
 scale = Vector2(0.71625, 0.71625)
-texture = ExtResource("7_5wjb2")
+texture = ExtResource("7_jk1kv")
 
 [node name="Area2D" type="Area2D" parent="Info"]
 position = Vector2(6.1035156e-05, 2.7923126)
@@ -140,7 +141,7 @@ script = ExtResource("11_xfrio")
 
 [node name="Babka" type="Sprite2D" parent="."]
 position = Vector2(218, 406)
-texture = ExtResource("12_tgbnn")
+texture = ExtResource("12_jk1kv")
 
 [node name="Area2D" type="Area2D" parent="Babka"]
 
